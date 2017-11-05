@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>ReactJS charter2</title>
+    
+    <script type="text/javascript" src="js/react.min.js"></script> 
+    <script type="text/javascript" src="js/react-dom.min.js"></script> 
+    <script type="text/javascript" src="js/browser.min.js"></script> 
+    <script type="text/javascript" src="js/react-bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="nav"></div>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-sm-9" id="sidebar">
+            </div>
+            <div class="col-sm-9 profile-desc">
+            </div>
+        </div>        
+    </div>
+    <script type="text/babel">
+    //Navbar
+    var Nav = ReactBootstrap.Nav;
+    var Navbar = ReactBootstrap.Navbar;
+    var NavItem = ReactBootstrap.NavItem;
+    var NavDropdown = ReactBootstrap.NavDropdown;
+    var MenuItem = ReactBootstrap.MenuItem;
+    var navbarReact = (
+        <Navbar>
+            <Navbar.Header>
+                <Navbar.Brand>
+                    <a href="#">EIS</a>
+                </Navbar.Brand>
+                <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+                <Nav>
+                    <NavItem eventKey={1} href="#">Home</NavItem>
+                    <NavItem eventKey={2} href="#">Edit Profile</NavItem>
+                    <NavDropdown eventKey={3} id="basic-nav-dropdown" title="Help Desk">
+                        <MenuItem eventKey={3.1}>View Tickets</MenuItem>
+                        <MenuItem eventKey={3.2}>New Ticket</MenuItem>
+                    </NavDropdown>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
+    );
+    ReactDOM.render(navbarReact, document.getElementById("nav"));
+
+    /*Profile - created using 'createElement'
+    var profile = React.createElement('li', {className:'list-group-item'}, 'Profile');
+    var profileImageLink = React.createElement('a', 
+        {className:'center-block text-center', href="#"}, 'Image');
+    var profileImageWrapper = React.createElement('li', 
+        {className:'list-group-item'}, profileImageLink);
+    var sidebar = React.createElement('ul', {className:'list-group'}, 
+        profile, profileImageWrapper);
+    ReactDOM.render(sidebar, document.getElementById('sidebar'));*/
+
+    //Create using dom methods
+    var Sidebar = React.DOM.ul({className:'list-group'},
+        React.DOM.li({className:'list-group-item text-muted'}, 'Profile'),
+        React.DOM.li({className:'list-group-item'},
+            React.DOM.a({className:'center-block text-center', href:'#'}, 'Image')),
+            React.DOM.li({className:'list-group-item text-right'}, '2.13.2004',
+                React.DOM.span({className:'pull-left'},
+                    React.DOM.strong({className:'pull-left'},'Joining Date')),
+                React.DOM.div({className:'clearfix'})));
+    ReactDOM.render(Sidebar, document.getElementById('sidebar'));
+
+    </script>
+<!--
+    using bootstrap css and bootstrap js
+    <div id="nav"></div>
+    <script type="text/babel">
+    var navbarHTML = 
+        <nav className="navbar navbar-default navbar-static-top" role="navigation">
+            <div className="container">
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" 
+                        data-target=".navbar-collapse">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                    </button>
+                    <a className="navbar-brand" href="#">EIS</a>
+                </div>
+
+                <div className="navbar-collapse collapse">
+                    <ul className="nav navbar-nav">
+                        <li className="active">
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Edit Profile</a>
+                        </li>
+                        <li className="dropdown">
+                            <a href="#" className="dropdown-toggle" data-toggle="dropdown">Help Desk
+                                <b className="caret"></b>
+                            </a>
+                            <ul className="dropdown-menu">
+                                <li>
+                                    <a href="#">View Tickets</a>
+                                </li>
+                                <li>
+                                    <a href="#">New Ticket</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    ReactDOM.render(navbarHTML, document.getElementById('nav'));
+    </script>
+-->
+</body>
+
+</html>
